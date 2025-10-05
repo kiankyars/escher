@@ -1,9 +1,0 @@
-# Dataset file paths - will point to dummy data for testing, then update to real TESS data
-train:
-  - /Users/kian/Code/escher/experiments/local_minimal/dummy_data/train/train_shard-0000-of-0001
-
-val:
-  - /Users/kian/Code/escher/experiments/local_minimal/dummy_data/val/val_shard-0000-of-0001
-
-test:
-  - /Users/kian/Code/escher/experiments/local_minimal/dummy_data/test/test_shard-0000-of-0001
