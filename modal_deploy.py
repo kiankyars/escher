@@ -13,19 +13,15 @@ image = (
         "numpy==1.24.3",
         "scipy==1.11.3",
     )
+    .add_local_dir("src", remote_path="/root/src")
+    .add_local_file("models/EXOPLANETv1_985.pt", remote_path="/root/models/EXOPLANETv1_985.pt")
 )
-
-# Mount your code and model files
-mounts = [
-    modal.Mount.from_local_dir("src", remote_path="/root/src"),
-    modal.Mount.from_local_file("models/EXOPLANETv1_985.pt", remote_path="/root/models/EXOPLANETv1_985.pt"),
-]
 
 @app.function(
     image=image,
-    mounts=mounts,
-    gpu=None,  # Use "any" if you want GPU
-    keep_warm=1,  # Keep 1 instance warm for fast responses
+    cpu=2,  # Use 2 CPUs
+    memory=4096,  # 4GB RAM
+    min_containers=1,  # Keep 1 instance warm for fast responses
 )
 @modal.asgi_app()
 def fastapi_app():
